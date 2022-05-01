@@ -1,0 +1,10 @@
+/* Change ProtonCalendars text color to white. 
+   Add to Firefox profile's /chrome/userContent.css */
+
+@-moz-document domain(calendar.protonmail.com) {
+    .calendar-eventcell:not(.isPast) .calendar-eventcell-title,
+    .calendar-eventcell:not(.isPast) .calendar-eventcell-timestring,
+    .calendar-dayeventcell-inner:not(.isPast):not(.isNotAllDay) .calendar-dayeventcell-title {
+    color: white;
+    }
+}
