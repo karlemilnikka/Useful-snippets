@@ -1,0 +1,16 @@
+/**
+ * Fix price formating in LearnDash status box
+ *
+ * Puts the currency symbol after the price and adds a space in between to 
+ * follow Swedish pricing formating. Add this snippet to your child-theme’s
+ * style.css file. See opal_learndash_swe_currency.php for snippet to fix
+ * the same issue in the Course Grid.
+ */
+
+.learndash-wrapper .ld-course-status-price .ld-currency {
+    order: 2;
+}
+
+.learndash-wrapper .ld-course-status-price .ld-currency:before {
+    content:"\00a0";
+}
