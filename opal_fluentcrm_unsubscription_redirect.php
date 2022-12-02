@@ -22,12 +22,6 @@ function opal_fluentcrm_unsubscription_redirect() {
         !isset( $_GET['route'] ) || $_GET['route'] !== 'unsubscribe' ) {
         return;
     }
-
-    // Return if FluentCRM isn’t installed and active.
-    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-    if ( !is_plugin_active( 'fluent-crm/fluent-crm.php' ) ) {
-        return;
-    }
     
     // Get secure hash from URL.
     $secure_hash = sanitize_text_field( $_GET['secure_hash'] );
