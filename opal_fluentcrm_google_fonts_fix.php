@@ -43,7 +43,7 @@ add_filter( 'wp_mail', 'opal_fluent_crm_fontfix_mail', 100, 1 );
  * 
  * Replaces requests to Google’s servers with BunnyCDN’s servers in the browser
  * view for emails created by the Visual Builder (Unlayer). Called by 
- * fluent_crm_email-design-template-visual_builder.
+ * fluent_crm/email-design-template-visual_builder.
  * 
  * @param   string      The email content to be displayed.
  * @return  string      The filtered email content to be displayed.
@@ -55,7 +55,7 @@ function opal_fluent_crm_fontfix_web( $content ) {
     return $content;
 }
 
-add_filter( 'fluent_crm_email-design-template-visual_builder', 'opal_fluent_crm_fontfix_web', 10, 1 );
+add_filter( 'fluent_crm/email-design-template-visual_builder', 'opal_fluent_crm_fontfix_web', 10, 1 );
 
 
 /**
