@@ -11,7 +11,7 @@
  * @author 		Nikka Systems <support@nikkasystems.com> 
  * @package     Opal
  * @since       2.0.00 beta 1
- * @version		2.0.00 beta 1
+ * @version		2.0.00 beta 2
  */
 
 
@@ -235,7 +235,7 @@ class Opal_Gravity_File_Protector {
 		$valid_hashes = array();
 
 		// Generate valid hashes for today and n days back.
-		for ( $day = 0; $day <= $this->opal_hash_extra_days; $day++ ) {
+		for ( $day = 0; $day <= self::$opal_hash_extra_days; $day++ ) {
 			$date = date( 'Ymd', strtotime( '-' . $day . ' days' ) );
 			$valid_hashes[] = $this->get_opal_download_hash( $gf_hash, $user_id, $date );
 		}
@@ -273,11 +273,14 @@ class Opal_Gravity_File_Protector {
 			GFCommon::log_debug( __METHOD__ . '(): The user ' . esc_attr( $user_id ) . ' has no active sessions.' );
 			return false;
 		}
+		
 		$latest_session = end( $user_sessions );
 		$session_timestamp = ( $latest_session['login'] );
 
 		$opal_salt = OPAL_SALT;
 		$opal_hash = hash( 'sha256', $date . $user_id . $session_timestamp . $gf_hash . $opal_salt );
+		$opal_hash = base64_encode( pack( 'H*', $opal_hash ) );
+		$opal_hash = preg_replace( '/[^a-zA-Z0-9]/', '', $opal_hash );
 		return $opal_hash;
 	}
 }
