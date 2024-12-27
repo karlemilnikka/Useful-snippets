@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * THIS SNIPPET IS NO LONGER NEEDED AFTER UPGRADING TO FLUENTCRM 2.9.31. YOU
+ * CAN REMOVE THE SNIPPET FROM YOUR FUNCTIONS.PHP FILE.
+ */
+
+/**
  * FluentCRM currently loads Google Fonts from Google’s servers, causing GDPR 
  * compliance issues for us who want to send newsletters with Google Fonts to 
  * EU subscribers. While waiting for an official fix, e.g., local caching of 
